@@ -1,0 +1,23 @@
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartindent
+set number
+map bn :bn<CR>
+
+syntax enable
+set background=dark
+colorscheme mayansmoke
+colorscheme matrix
+colorscheme masmed
+colorscheme martin_krischik
+colorscheme maroloccio
+colorscheme marklar
+colorscheme manxome
+colorscheme luinnar
+colorscheme lucius
+colorscheme liquidcarbon
+colorscheme lettuce
+colorscheme liquidcarbon
+colorscheme lettuce
