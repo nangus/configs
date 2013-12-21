@@ -4,7 +4,7 @@ SAVEHIST=1000
 
 #autoload -U colors && colors
 #export PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}$ "
-export PS1=$'\e[1;32m%n\e[0m@\e[1;34m%m \e[1;33m%~ \e[0m$ '
+export PS1=$'%{\e[1;32m%}%n%{\e[0m%}@%{\e[1;34m%}%m %{\e[1;33m%}%~ %{\e[0m%}$ '
 
 bindkey -e
 # End of lines configured by zsh-newuser-install
