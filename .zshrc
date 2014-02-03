@@ -78,8 +78,10 @@ function ruby_version {
 }
 
 function node_version {
-    if test -f package.json || test "$(find . -maxdepth 1 -type f -name "*.js")"; then
-        echo "| %{$fg[green]%}`node -v | cut -d " " -f 2`%{$reset_color%} " 2>/dev/null
+    if (( $+node )) ; then 
+        if test -f package.json || test "$(find . -maxdepth 1 -type f -name "*.js")"; then
+            echo "| %{$fg[green]%}`node -v | cut -d " " -f 2`%{$reset_color%} " 2>/dev/null
+        fi
     fi
 }
 
