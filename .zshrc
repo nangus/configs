@@ -18,6 +18,7 @@ alias ypu='cd ~/src/yp-engineering/yp'
 alias ls='/bin/ls --color'
 alias ll='ls -ahl'
 alias grep='grep --colour=auto'
+alias ng='sudo su - nextgen'
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -110,3 +111,4 @@ function precmd() {
 autoload -U colors && colors
 
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+export PERLLIB=/home/nj9312/perl/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/
