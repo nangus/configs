@@ -1,0 +1,16 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	dev = checkout develop
+	mast = checkout master
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	cia = commit -a
+[user]
+	email = nj9312@yp.com
+	name = Nicholas Jones
+[push]
+	default = simple
