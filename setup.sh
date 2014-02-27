@@ -11,7 +11,12 @@ do
     fi
 done
 
+if [[ -h ~/.gitconfig ]]; then 
+    rm ~/.gitconfig
+fi
 if [[ -e ~/.gitconfig ]]; then 
+    echo "~/.gitconfig exists and can not be created "
+else
     rm ~/.gitconfig
     if [[ $(which git) ]]; then
         if [[ $(git --version|grep 1.8) ]]; then
@@ -22,6 +27,4 @@ if [[ -e ~/.gitconfig ]]; then
     else
         echo "git is not installed we are not going to create a simlink to ~/.gitconfig"
     fi
-else
-    echo "~/.gitconfig exists and can not be created "
 fi
