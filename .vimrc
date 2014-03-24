@@ -6,6 +6,7 @@ set shiftwidth=4
 set smartindent
 set number
 map bn :bn<CR>
+map tt :NERDTreeToggle<CR>
 
 syntax enable
 set background=dark

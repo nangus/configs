@@ -1,12 +1,13 @@
 [alias]
 #use this to add remote masters only needs to be done once 
-    rau = remote add upstream
+	rau = remote add upstream
 #pull code from remote upstream and merge if different
-    pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+    posh = "push --set-upstream origin"
 	co = checkout
 	ci = commit
 	st = status
-    srp = checkout srp
+	srp = checkout srp
 	dev = checkout develop
 	mast = checkout master
 	br = branch
