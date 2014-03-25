@@ -5,6 +5,8 @@ set tabstop=4
 set shiftwidth=4
 set smartindent
 set number
+set suffixesadd+=.js
+
 map bn :bn<CR>
 map tt :NERDTreeToggle<CR>
 
