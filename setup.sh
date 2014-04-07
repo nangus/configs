@@ -17,7 +17,6 @@ fi
 if [[ -e ~/.gitconfig ]]; then 
     echo "~/.gitconfig exists and can not be created "
 else
-    rm ~/.gitconfig
     if [[ $(which git) ]]; then
         if [[ $(git --version|grep 1.8) ]]; then
             ln -s `pwd`/.gitconfig.1.8 ~/.gitconfig
