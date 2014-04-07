@@ -139,3 +139,5 @@ zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~
 export PERLLIB=/home/nj9312/perl/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/
 bindkey ';3D' emacs-backward-word
 bindkey ';3C' emacs-forward-word
+bindkey 'OH' beginning-of-line
+bindkey 'OF' end-of-line
