@@ -128,12 +128,12 @@ function setRuby() {
         echo out of range
     fi
 }
-function cleanPath() {
-    CLEAN=`echo $PATH|tr ":" "\n"|sort|uniq|grep -v '/usr/local/bin/'|tr "\n" ":"`
-    MINE=`echo $CLEAN|tr ":" "\n"|grep $(whoami)|tr "\n" ":"`
-    OTHE=`echo $CLEAN|tr ":" "\n"|grep -v $(whoami)|tr "\n" ":"`
-    export PATH=$(echo $MINE:/usr/local/bin/:$OTHE|sed 's#::\+#:#g'|sed 's#:$##'|sed 's#^:##')
-}
+#function cleanPath() {
+#    CLEAN=`echo $PATH|tr ":" "\n"|sort|uniq|grep -v '/usr/local/bin/'|tr "\n" ":"`
+#    MINE=`echo $CLEAN|tr ":" "\n"|grep $(whoami)|tr "\n" ":"`
+#    OTHE=`echo $CLEAN|tr ":" "\n"|grep -v $(whoami)|tr "\n" ":"`
+#    export PATH=$(echo $MINE:/usr/local/bin/:$OTHE|sed 's#::\+#:#g'|sed 's#:$##'|sed 's#^:##')
+#}
 
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 export PERLLIB=/home/nj9312/perl/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/
@@ -141,3 +141,8 @@ bindkey ';3D' emacs-backward-word
 bindkey ';3C' emacs-forward-word
 bindkey 'OH' beginning-of-line
 bindkey 'OF' end-of-line
+
+export ORACLE_HOME=$HOME/oracle/instantclient_11_2
+export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
+export PATH=$ORACLE_HOME:$PATH
+export TNS_ADMIN=$ORACLE_HOME/network/admin
