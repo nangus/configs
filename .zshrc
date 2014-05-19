@@ -146,4 +146,4 @@ export ORACLE_HOME=$HOME/oracle/instantclient_11_2
 export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME:$PATH
 export TNS_ADMIN=$ORACLE_HOME/network/admin
-export GOPATH=/home/njones/goLib
+export GOPATH=$HOME/.goLib
