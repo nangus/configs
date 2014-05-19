@@ -128,6 +128,7 @@ function setRuby() {
         echo out of range
     fi
 }
+
 #function cleanPath() {
 #    CLEAN=`echo $PATH|tr ":" "\n"|sort|uniq|grep -v '/usr/local/bin/'|tr "\n" ":"`
 #    MINE=`echo $CLEAN|tr ":" "\n"|grep $(whoami)|tr "\n" ":"`
@@ -147,3 +148,5 @@ export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME:$PATH
 export TNS_ADMIN=$ORACLE_HOME/network/admin
 export GOPATH=$HOME/.goLib
+mkdir -p $GOPATH
+export PATH=/home/t/go/bin:$PATH
