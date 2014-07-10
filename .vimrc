@@ -14,3 +14,8 @@ syntax enable
 set background=dark
 colorscheme martin_krischik
 colorscheme lettuce
+
+nmap = :Tabularize /=<CR>
+vmap = :Tabularize /=<CR>
+nmap ; :Tabularize /:<CR>
+vmap ; :Tabularize /:<CR>

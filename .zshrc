@@ -34,7 +34,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # Prompt
 ###############################################################
 function git_branch_string {
-    echo "`git status | grep "^# On branch .*$" | cut -d " " -f 4`"
+    echo "`git status | grep "^On branch .*$" | cut -d " " -f 3`"
 }
 
 function git_branch {
@@ -46,10 +46,10 @@ function git_branch {
     git rev-parse --git-dir &> /dev/null
 
     git_status="$(git status 2> /dev/null)"
-    branch_pattern="^# On branch (.*)$"
-    remote_pattern="# Your branch is (.*) of"
-    diverge_pattern="# Your branch and (.*) have diverged"
-    ahead_pattern="^# Your branch is ahead of"
+    branch_pattern="^On branch (.*)$"
+    remote_pattern="Your branch is (.*) of"
+    diverge_pattern="Your branch and (.*) have diverged"
+    ahead_pattern="^Your branch is ahead of"
 
     if [[ ! ${git_status} =~ "working directory clean" ]]; then
         state=" ${RED}⚡"
@@ -78,10 +78,48 @@ function ruby_version {
     fi
 }
 
+function node_inpath {
+    PAT=`pwd`
+    while [[ `echo $PAT` != "" ]]; do
+        if $(ls $PAT/.git 1>/dev/null 2>&1) ; then
+            if [ `ls $PAT/package.json` ]; then
+                echo  -n 'found'
+                return 
+            fi
+            echo -n 'not found'
+            return 
+        fi
+        PAT=`echo $PAT|sed 's#/[^/]*$##'`
+    done
+    echo -n 'not found'
+}
+
+function correct_node {
+    PAT=`pwd`
+    while [[ `echo $PAT` != "" ]]; do
+        if $(ls $PAT/.git 1>/dev/null 2>&1) ; then
+            if [ `ls $PAT/NODE_VERSION 2>/dev/null ` ]; then
+                echo -n 'v';
+                cat $PAT/NODE_VERSION
+                return 
+            fi
+            return 
+        fi  
+        PAT=`echo $PAT|sed 's#/[^/]*$##'`
+    done
+}
+
+
 function node_version {
-    if (( $+node )) ; then 
-        if test -f package.json || test "$(find . -maxdepth 1 -type f -name "*.js")"; then
-            echo "| %{$fg[green]%}`node -v | cut -d " " -f 2`%{$reset_color%} " 2>/dev/null
+    if $(command -v node >/dev/null 2>&1)  ; then 
+        nodeV=`node -v`
+        needV=`correct_node`
+        if [[ $needV != '' ]]; then
+            if [[ $nodeV == $needV ]]; then
+                echo "| %{$fg[green]%} $nodeV %{$reset_color%} " 2>/dev/null
+            else
+                echo "| %{$fg[red]%} $nodeV %{$reset_color%} " 2>/dev/null
+            fi
         fi
     fi
 }
@@ -107,7 +145,7 @@ function precmd() {
     local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
     test "$PS_SIGN" || export PS_SIGN="[I] "
     PS1="%{$fg[yellow]%}[%n@%m] %{$fg[blue]%}%~%{$reset_color%} $ "
-    RPROMPT="%{$fg[red]%}${return_code} %{$reset_color%} [${p_git_branch}`ruby_version``node_version`]"
+    RPROMPT="%{$fg[red]%}${return_code} %{$reset_color%} [${p_git_branch}`node_version||ruby_version`]"
 }
 
 autoload -U colors && colors
