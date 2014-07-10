@@ -46,10 +46,10 @@ function git_branch {
     git rev-parse --git-dir &> /dev/null
 
     git_status="$(git status 2> /dev/null)"
-    branch_pattern="^On branch (.*)$"
+    branch_pattern="On branch (.*)$"
     remote_pattern="Your branch is (.*) of"
     diverge_pattern="Your branch and (.*) have diverged"
-    ahead_pattern="^Your branch is ahead of"
+    ahead_pattern="Your branch is ahead of"
 
     if [[ ! ${git_status} =~ "working directory clean" ]]; then
         state=" ${RED}⚡"
