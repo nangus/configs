@@ -1,8 +1,8 @@
 set autoindent
 set autowrite
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smartindent
 set number
 set suffixesadd+=.js

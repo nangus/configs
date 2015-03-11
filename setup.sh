@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in `ls --color='never' -A |grep -v '^.gitconfig'|grep -v '^.git$' |grep -v setup.sh`
+for i in `ls -A |grep -v '^.gitconfig'|grep -v '^.git$' |grep -v setup.sh`
 do
     if [[ -h ~/$i ]]; then
         rm ~/$i

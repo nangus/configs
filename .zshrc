@@ -15,10 +15,14 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 alias ypu='cd ~/src/yp-engineering/yp'
-alias ls='/bin/ls --color'
+alias ls='/bin/ls -G'
 alias ll='ls -ahl'
 alias grep='grep --colour=auto'
 alias ng='sudo su - nextgen'
+
+alias nj='ssh -l nj9312'
+alias ne='ssh -l nextgen'
+
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -179,7 +183,9 @@ export PERLLIB=/home/nj9312/perl/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread
 bindkey ';3D' emacs-backward-word
 bindkey ';3C' emacs-forward-word
 bindkey 'OH' beginning-of-line
+bindkey '[1~' beginning-of-line
 bindkey 'OF' end-of-line
+bindkey '[4~' end-of-line
 
 export ORACLE_HOME=$HOME/oracle/instantclient_11_2
 export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
