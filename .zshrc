@@ -19,7 +19,7 @@ alias ypu='cd ~/src/yp-engineering/yp'
 ls --color 1>/dev/null 2>&1
 
 if [[ $? == 0 ]]; then
-  alias ls='/bin/ls -G'
+  alias ls='/bin/ls --color'
 else
   alias ls='/bin/ls -G'
 fi
