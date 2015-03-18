@@ -14,8 +14,16 @@ bindkey -e
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
 alias ypu='cd ~/src/yp-engineering/yp'
-alias ls='/bin/ls -G'
+ls --color 1>/dev/null 2>&1
+
+if [[ $? == 0 ]]; then
+  alias ls='/bin/ls -G'
+else
+  alias ls='/bin/ls -G'
+fi
+
 alias ll='ls -ahl'
 alias grep='grep --colour=auto'
 alias ng='sudo su - nextgen'
