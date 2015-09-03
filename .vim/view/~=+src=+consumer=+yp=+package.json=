@@ -37,7 +37,7 @@ if &filetype != 'json'
 setlocal filetype=json
 endif
 setlocal foldcolumn=0
-setlocal nofoldenable
+setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
@@ -103,15 +103,15 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 74 - ((65 * winheight(0) + 34) / 68)
+let s:l = 31 - ((30 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-74
-normal! 016|
+31
+normal! 09|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

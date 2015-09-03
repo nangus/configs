@@ -96,10 +96,10 @@ function node_inpath {
         if $(ls $PAT/.git 1>/dev/null 2>&1) ; then
             if [ `ls $PAT/package.json` ]; then
                 echo  -n 'found'
-                return 
+                return
             fi
             echo -n 'not found'
-            return 
+            return
         fi
         PAT=`echo $PAT|sed 's#/[^/]*$##'`
     done
@@ -113,28 +113,29 @@ function correct_node {
             if [ `ls $PAT/NODE_VERSION 2>/dev/null ` ]; then
                 echo -n 'v';
                 cat $PAT/NODE_VERSION
-                return 
+                return
             fi
-            return 
-        fi  
+            return
+        fi
         PAT=`echo $PAT|sed 's#/[^/]*$##'`
     done
 }
 
 
 function node_version {
-    if $(command -v node >/dev/null 2>&1)  ; then 
+    if $(command -v node >/dev/null 2>&1)  ; then
         nodeV=`node -v`
-        needV=`correct_node`
+        needV=$(correct_node)
         if [[ $needV != '' ]]; then
-            if [[ $nodeV == $needV ]]; then
-                echo "| %{$fg[green]%} $nodeV %{$reset_color%} " 2>/dev/null
-            else
-                echo "| %{$fg[red]%} $nodeV %{$reset_color%} " 2>/dev/null
-            fi
+          if [[ $nodeV == $needV ]]; then
+            echo "| %{$fg[green]%} $nodeV %{$reset_color%} " 2>/dev/null
+          else
+            echo "| %{$fg[red]%} $nodeV %{$reset_color%} " 2>/dev/null
+          fi
         fi
     fi
 }
+
 
 if test "$( zsh --version | awk '{print $2}' | awk -F'.' ' ( $1 > 4 || ( $1 == 4 && $2 > 3 ) || ( $1 == 4 && $2 == 3 && $3 >= 17 ) ) ' )"
 then
@@ -165,7 +166,7 @@ autoload -U colors && colors
 function setRuby() {
     arr=(`ls --color=no /home/t|grep ruby`)
     i=0
-    for s in $arr[@] ; do 
+    for s in $arr[@] ; do
         i=$((i + 1))
         echo $i $s
     done
@@ -174,7 +175,7 @@ function setRuby() {
     if [[ $IN < $i ]]; then
         echo ${arr[$IN]}
         export PATH=/home/t/${arr[$IN]}/bin:$PATH
-    else 
+    else
         echo out of range
     fi
 }
@@ -206,3 +207,8 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/nj9312/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
+export NVM_DIR="/Users/nj9312/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
+export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools

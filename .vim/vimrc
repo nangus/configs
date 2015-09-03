@@ -12,16 +12,16 @@
         " }
 
         " Immediately following Bundles include.
-        filetype plugin indent on    " required
+        " filetype plugin indent on    " required
 
         let mapleader = '\'
 
         if has ("unix") && "Darwin" != system("echo -n \"$(uname)\"")
           " on Linux use + register for copy-paste
-          set clipboard=unnamedplus
+          "set clipboard=unnamedplus
         else
           " one mac and windows, use * register for copy-paste
-          set clipboard=unnamed
+          " set clipboard=unnamed
         endif
     " }
 " }
@@ -190,8 +190,8 @@
     endif
 
     " Could use * rather than *.*, but I prefer to leave .files unsaved
-    au BufWinLeave *.* silent! mkview   "make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+    "au BufWinLeave *.* silent! mkview   "make vim save view (state) (folds, cursor, etc)
+    "au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 " }
 
 " Local - aka Overides{
@@ -214,4 +214,11 @@ syntax enable
 set background=dark
 colorscheme martin_krischik
 colorscheme lettuce
+" by default
+"let g:jsbeautify_engine = "node"
+" If you bin name for node is nodejs
+"let g:jsbeautify_engine = "nodejs"
+"let g:jsbeautify_engine = "v8"
+" or if you have other alias
+"let g:jsbeautify_engine = "v8-alias"
 
