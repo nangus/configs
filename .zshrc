@@ -46,7 +46,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # Prompt
 ###############################################################
 function git_branch_string {
-    echo "`git status | grep "^On branch .*$" | cut -d " " -f 3`"
+    echo "`git status | grep 'On branch'|sed 's/.*On branch //'`"
 }
 
 function git_branch {
@@ -96,10 +96,10 @@ function node_inpath {
         if $(ls $PAT/.git 1>/dev/null 2>&1) ; then
             if [ `ls $PAT/package.json` ]; then
                 echo  -n 'found'
-                return 
+                return
             fi
             echo -n 'not found'
-            return 
+            return
         fi
         PAT=`echo $PAT|sed 's#/[^/]*$##'`
     done
@@ -113,17 +113,17 @@ function correct_node {
             if [ `ls $PAT/NODE_VERSION 2>/dev/null ` ]; then
                 echo -n 'v';
                 cat $PAT/NODE_VERSION
-                return 
+                return
             fi
-            return 
-        fi  
+            return
+        fi
         PAT=`echo $PAT|sed 's#/[^/]*$##'`
     done
 }
 
 
 function node_version {
-    if $(command -v node >/dev/null 2>&1)  ; then 
+    if $(command -v node >/dev/null 2>&1)  ; then
         nodeV=`node -v`
         needV=`correct_node`
         if [[ $needV != '' ]]; then
@@ -165,7 +165,7 @@ autoload -U colors && colors
 function setRuby() {
     arr=(`ls --color=no /home/t|grep ruby`)
     i=0
-    for s in $arr[@] ; do 
+    for s in $arr[@] ; do
         i=$((i + 1))
         echo $i $s
     done
@@ -174,7 +174,7 @@ function setRuby() {
     if [[ $IN < $i ]]; then
         echo ${arr[$IN]}
         export PATH=/home/t/${arr[$IN]}/bin:$PATH
-    else 
+    else
         echo out of range
     fi
 }
