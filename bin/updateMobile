@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in /Users/nj9312/src/mobile/*.git
+do
+  cd $i
+  git fetch -p origin
+  git push --mirror
+done
+

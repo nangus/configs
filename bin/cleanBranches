@@ -1,0 +1,22 @@
+#!/bin/bash
+
+dat=''
+if [[ $1 ]];
+then
+  dat=`date +%s -d "$1 days ago"`
+else
+  dat=`date +%s -d '30 days ago'`
+fi
+
+toDel=''
+for i in `git branch -r --merged master | grep -v 'HEAD'|grep -v 'develop'|grep -v '\->'| grep -v 'master'`
+do
+  if [[ `git show --format="%ct" $i|head -1` < $dat ]]; then
+    echo removing $i
+    toDel=$(echo $toDel :`echo $i|sed 's/.*origin\///'`)
+    #git push origin :`echo $i|sed 's/origin\///'`
+  fi
+done
+
+#echo $toDel
+git push origin $toDel
