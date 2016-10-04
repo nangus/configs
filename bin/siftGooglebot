@@ -1,7 +1,4 @@
 
-echo hello
-echo $1
-exit
 MM=$(printf '%02d' $1 )
 for i in $(seq $2 $3)
 do

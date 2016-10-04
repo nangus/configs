@@ -1,6 +1,7 @@
 
 echo hello
 echo $1
+echo $@
 exit
 MM=$(printf '%02d' $1 )
 for i in $(seq $2 $3)
