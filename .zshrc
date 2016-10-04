@@ -212,3 +212,4 @@ export NVM_DIR="/Users/nj9312/.nvm"
 
 export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
 export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
+export PATH=/home/t/bin:$PATH
