@@ -1,5 +1,13 @@
+
 MM=$(printf '%02d' $1 )
-for i in $(seq $2 $3)
+
+if [[ $3 -gt $2 ]]; then
+  nums=$(seq $2 $3)
+else
+  nums=$(seq $3 $2|sort -r)
+fi
+
+for i in $nums
 do
   i=$(printf '%02d' $i)
   log-downloader --date=2016$MM$i --dc=ev1 --type=access
