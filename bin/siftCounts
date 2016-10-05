@@ -4,7 +4,7 @@ MM=$(printf '%02d' $1 )
 if [[ $3 -gt $2 ]]; then
   nums=$(seq $2 $3)
 else
-  nums=$(seq $3 $2|sort -r)
+  nums=$(seq $3 $2|sort -rn)
 fi
 
 APP=ypm
