@@ -1,0 +1,21 @@
+
+MM=$(printf '%02d' $1 )
+
+if [[ $3 -gt $2 ]]; then
+  nums=$(seq $2 $3)
+else
+  nums=$(seq $3 $2|sort -nr)
+fi
+
+APP=ypm
+
+for i in $nums
+do
+  i=$(printf '%02d' $i)
+  log-downloader --date=2016$MM$i --app=$APP --type=access
+  zcat data/$APP/access/2016$MM$i/*|sed 's#.*HTTP/..." [0-9]* [0-9\-]* ##'|sed 's/ .*//'|sed 's/^"http:\/\///'|sed 's#"https://##'|sed 's#/.*##' > refs.$APP.2016.$MM.$i.log
+  #zcat data/$APP/access/2016$MM$i/*|grep  -v ' "GET /health.txt HTTP/'|sed 's#.*HTTP/..." ##'|sed 's/ .*//' > count.$APP.2016.$MM.$i.resp
+  #would be faster in to inline but I do not want to lose the data, that and it is a bit broken
+  #cat done/count/heads count.$APP.2016.$MM.$i.resp|sort|uniq -c|sed 's/ *//'|sed 's/ .*//'|tr '\n' '\t' |sed 's/\t$/\n/' >count.$APP.2016.$MM.$i.line
+done
+
