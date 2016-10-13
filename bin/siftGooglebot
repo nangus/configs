@@ -11,8 +11,8 @@ for i in $nums
 do
   i=$(printf '%02d' $i)
   log-downloader --date=2016$MM$i --dc=ev1 --type=access
-  zcat data/ypu/access/2016$MM$i/*|grep Googlebot |sed 's#.*HTTP/..." ##'|sed 's/ .*//' > gbot.2016.$MM.$i.resp
+  zcat data/ypu/access/2016$MM$i/*|grep Googlebot |grep -v '/mip/'|sed 's#.*HTTP/..." ##'|sed 's/ .*//' > gbot.2016.$MM.$i.resp
   #would be faster in to inline but I do not want to lose the data, that and it is a bit broken
-  cat done/count/heads gbot.2016.$MM.$i.resp|sort|uniq -c|sed 's/ *//'|sed 's/ .*//'|tr '\n' '\t' |sed 's/\t$/\n/' >gbot.2016.$MM.$i.line
+  #cat done/count/heads gbot.2016.$MM.$i.resp|sort|uniq -c|sed 's/ *//'|sed 's/ .*//'|tr '\n' '\t' |sed 's/\t$/\n/' >gbot.2016.$MM.$i.line
 done
 

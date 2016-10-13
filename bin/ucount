@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-@codes=(200,301,302,303,304,400,401,402,403,404,410,499,500,501,502,503,504);
-
 if ($ARGV[0]){
 }else{
   print "nothing passsed we are going to need a do over.\n";
@@ -14,13 +12,16 @@ foreach $c(@codes){
 }
 while ($in=<IN>){
   chomp($in);
+  $in=~s/"//g;
   $c{$in}++;
 }
 $s="";
 $count=0;
-foreach $k(@codes){
-  $s.= "\t".$c{$k};
-  $count+=$c{$k};
+@c=();
+foreach $k(keys %c){
+  push @c, $c{$k}."\t".$k;
 }
 
-print $count.$s."\n";
+foreach $s(sort { ($a =~ /(\d+)/)[0] <=> ($b =~ /(\d+)/)[0] } @c){
+  print $s."\n";
+}
