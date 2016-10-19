@@ -207,8 +207,28 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/nj9312/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
+export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
+export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
+
 export NVM_DIR="/Users/nj9312/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
-export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" != "N/A" ] && [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
