@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+if ($ARGV[0]){
+}else{
+  print "nothing passsed we are going to need a do over.\n";
+  exit -1;
+}
+open IN, $ARGV[0];
+%c=();
+foreach $c(@codes){
+  $c{$c}=0;
+}
+while ($in=<IN>){
+  chomp($in);
+  $in=~s/"//g;
+  $c{$in}++;
+}
+$s="";
+$count=0;
+@c=();
+foreach $k(keys %c){
+  push @c, $c{$k}."\t".$k;
+}
+
+foreach $s(sort { ($a =~ /(\d+)/)[0] <=> ($b =~ /(\d+)/)[0] } @c){
+  print $s."\n";
+}
