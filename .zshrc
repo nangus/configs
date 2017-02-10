@@ -203,9 +203,6 @@ export TNS_ADMIN=$ORACLE_HOME/network/admin
 export GOPATH=$HOME/.goLib
 mkdir -p $GOPATH
 export PATH=/home/t/go/bin:$PATH
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/nj9312/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
 
 export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
 export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
@@ -221,8 +218,9 @@ load-nvmrc() {
 
   if [ -n "$nvmrc_path" ]; then
     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" != "N/A" ] && [ "$nvmrc_node_version" != "$node_version" ]; then
+    if [[ "$nvmrc_node_version" == "N/A" ]]; then
+      nvm install $(cat "${nvmrc_path}")
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
       nvm use
     fi
   elif [ "$node_version" != "$(nvm version default)" ]; then
@@ -232,3 +230,9 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+PATH="/Users/nj9312/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/nj9312/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/nj9312/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/nj9312/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/nj9312/perl5"; export PERL_MM_OPT;
