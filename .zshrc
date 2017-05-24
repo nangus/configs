@@ -63,7 +63,7 @@ function git_branch {
     diverge_pattern="Your branch and (.*) have diverged"
     ahead_pattern="Your branch is ahead of"
 
-    if [[ ! ${git_status} =~ "working directory clean" ]]; then
+    if [[ ! ${git_status} =~ "working .* clean" ]]; then
         state=" ${RED}⚡"
     fi
     if [[ ${git_status} =~ ${remote_pattern} ]]; then
