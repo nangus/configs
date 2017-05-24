@@ -213,6 +213,11 @@ export NVM_DIR="/Users/nj9312/.nvm"
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
+  nvm 1>/dev/null 2>&1
+  HASNVM=$?
+  if [[ $HASNVM != 0 ]]; then
+    return
+  fi
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
