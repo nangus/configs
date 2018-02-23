@@ -27,10 +27,7 @@ fi
 alias ll='ls -ahl'
 alias grep='grep --colour=auto'
 alias ng='sudo su - nextgen'
-
-alias nj='ssh -l nj9312'
-alias ne='ssh -l nextgen'
-
+alias nj='ssh -l nojones'
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -188,7 +185,6 @@ function setRuby() {
 #}
 
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-export PERLLIB=/home/nj9312/perl/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/
 bindkey ';3D' emacs-backward-word
 bindkey ';3C' emacs-forward-word
 bindkey 'OH' beginning-of-line
@@ -204,10 +200,7 @@ export GOPATH=$HOME/.goLib
 mkdir -p $GOPATH
 export PATH=/home/t/go/bin:$PATH
 
-export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
-export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
-
-export NVM_DIR="/Users/nj9312/.nvm"
+export NVM_DIR="/Users/njones/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # place this after nvm initialization!
@@ -236,11 +229,11 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-PATH="/Users/nj9312/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/nj9312/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/nj9312/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/nj9312/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/nj9312/perl5"; export PERL_MM_OPT;
-export PATH=$PATH:/Users/nj9312/src/android-sdks/tools/
-export PATH=$PATH:/Users/nj9312/src/android-sdks/platform-tools
+PATH="/Users/njones/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/njones/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/njones/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/njones/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/njones/perl5"; export PERL_MM_OPT;
+export PATH=$PATH:/Users/njones/src/android-sdks/tools/
+export PATH=$PATH:/Users/njones/src/android-sdks/platform-tools
 export PATH=/home/t/bin:$PATH

@@ -1,5 +1,5 @@
 [alias]
-#use this to add remote masters only needs to be done once 
+#use this to add remote masters only needs to be done once
 	rau = remote add upstream
 #pull code from remote upstream and merge if different
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
@@ -15,8 +15,5 @@
 	type = cat-file -t
 	dump = cat-file -p
 	cia = commit -a
-[user]
-	email = nj9312@yp.com
-	name = Nicholas Jones
 [push]
 	default = simple
