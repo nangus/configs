@@ -104,7 +104,7 @@
         set scrolloff=3                 " minimum lines to keep above and below cursor
         "jason look here!!!!
         set list
-        set listchars=space:.,tab:>\ ,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+        set listchars=tab:>\ ,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
         if has('gui_running')
           " gvim and macvim configs here
