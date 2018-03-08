@@ -94,3 +94,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ll='/bin/ls -Al  --color=tty'
+[[ -s "$HOME/.rvm/scripts/rvm" ]] || curl -sSL https://get.rvm.io | bash -s stable
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
