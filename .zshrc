@@ -97,3 +97,4 @@ source $ZSH/oh-my-zsh.sh
 alias ll='/bin/ls -Al  --color=tty'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] || curl -sSL https://get.rvm.io | bash -s stable
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+alias vss='vagrant ssh'
