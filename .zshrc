@@ -94,7 +94,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='/bin/ls -Al  --color=tty'
-[[ -s "$HOME/.rvm/scripts/rvm" ]] || curl -sSL https://get.rvm.io | bash -s stable
+alias ll='ls -Al'
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] || gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && curl -sSL https://get.rvm.io | bash -s stable
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 alias vss='vagrant ssh'
+export PATH="/opt/puppetlabs/puppet/bin:$PATH"
