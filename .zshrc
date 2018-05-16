@@ -99,3 +99,8 @@ alias ll='ls -Al'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 alias vss='vagrant ssh'
 export PATH="/opt/puppetlabs/puppet/bin:$PATH"
+export PATH="$HOME/.rvm/rubies/ruby-2.4.1/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+alias nj='ssh -l nojones'
