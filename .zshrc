@@ -104,3 +104,7 @@ export PATH="$HOME/.rvm/rubies/ruby-2.4.1/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 alias nj='ssh -l nojones'
+alias uwd='export MY_CWD=$(pwd);sed -i "s#^export MY_CWD=##d" ~/.zshrc;echo "export MY_CWD=$(pwd)" >> ~/.zshrc'
+alias pa='${MY_CWD}/pa'
+export MY_CWD=/home/ec2-user/src/jpl/cam_server/cam_server/manifests
+export MY_CWD=/home/ec2-user/src/jpl/cam_server
