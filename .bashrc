@@ -1,12 +1,8 @@
 #alias ypu='cd ~/src/yp-engineering/yp'
-<<<<<<< HEAD
-=======
 if [[ `echo $-|grep i`  ]]
       then
-      #exec zsh --login
-echo pfft
+      exec zsh
 fi
->>>>>>> 3c58e9b772cad7d93d82061b83f9d64f24d3116f
 #
 
 
