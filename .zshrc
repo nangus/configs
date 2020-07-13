@@ -108,6 +108,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/bin/miniconda3/bin:$PATH"
 alias nj='ssh -l nojones'
 alias ec='ssh -l ec2-user -i ~/.ssh/asis-dev-govcloud.pem'
-
 unsetopt share_history
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+alias uwd='export MY_CWD=$(pwd);sed -i "s#^export MY_CWD=##d" ~/.zshrc;echo "export MY_CWD=$(pwd)" >> ~/.zshrc'
+alias pa='${MY_CWD}/pa'
+export MY_CWD=/home/ec2-user/src/jpl/cam_server/cam_server/manifests
+export MY_CWD=/home/ec2-user/src/jpl/cam_server
