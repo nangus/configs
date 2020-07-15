@@ -108,4 +108,4 @@ alias nj='ssh -l nojones'
 alias uwd='export MY_WD=$(pwd);sed --in-place --follow-symlinks "/^export MY_WD/d" ~/.zshrc;echo "export MY_WD=$(pwd)" >> ~/.zshrc'
 alias pa='${MY_WD}/pa'
 alias wd='cd ${MY_WD}'
-export MY_WD=/home/ec2-user/src
+export MY_WD=/home/ec2-user/src/jpl/cam_server

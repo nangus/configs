@@ -200,6 +200,7 @@ set autowrite
 " set tabstop=2
 " set shiftwidth=2
 set smartindent
+set nohlsearch
 set number
 set suffixesadd+=.js
 
