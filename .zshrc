@@ -109,3 +109,25 @@ alias uwd='export MY_WD=$(pwd);sed --in-place --follow-symlinks "/^export MY_WD/
 alias pa='${MY_WD}/pa'
 alias wd='cd ${MY_WD}'
 export MY_WD=/home/ec2-user/src/jpl/cam_server
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"  # This loads nvm
+source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
