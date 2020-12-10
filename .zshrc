@@ -9,6 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="steeef"
 
+ZSH_DISABLE_COMPFIX="true"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -62,9 +63,29 @@ plugins=(
   git
   yum
   vagrant
+  terraform
+  brew
+  docker
+  zsh_reload
+  kubectl
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
+
+
+#Withokta
+if [ -f "/Users/nicholas.jones/.okta/okta-aws" ]; then
+    . "/Users/nicholas.jones/.okta/okta-aws"
+fi
+
+# Load zshrc helpers from textnow
+if [ -d ~/.zshrc.d ]; then
+  for i in ~/.zshrc.d/*; do
+    source $i
+  done
+fi
+
 
 # User configuration
 
@@ -105,10 +126,9 @@ export PATH="$HOME/.rvm/rubies/ruby-2.4.1/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 alias nj='ssh -l nojones'
 #alias uwd='export MY_WD=$(pwd);sed --in-place --follow-symlinks "/^export MY_WD/d" ~/.zshrc'
-alias uwd='export MY_WD=$(pwd);sed --in-place --follow-symlinks "/^export MY_WD/d" ~/.zshrc;echo "export MY_WD=$(pwd)" >> ~/.zshrc'
+alias uwd='export MY_WD=$(pwd);sed -i.bak "/^export MY_WD/d" $(readlink ~/.zshrc);echo "export MY_WD=$(pwd)" >> ~/.zshrc'
 alias pa='${MY_WD}/pa'
 alias wd='cd ${MY_WD}'
-export MY_WD=/home/ec2-user/src/jpl/cam_server
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
@@ -131,3 +151,18 @@ NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"  # This loads nvm
 source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+export PS1='$(kube_ps1) %{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+# '
+
+
+#Withokta
+if [ -f "/Users/nicholas.jones/.okta/okta-aws" ]; then
+    . "/Users/nicholas.jones/.okta/okta-aws"
+fi
+
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$HOME/.rvm/gems/ruby-2.5.1/bin:$HOME/.rvm/bin:$PATH"
+export MY_WD=/Users/nicholas.jones/src/textnow/kubernetes/_build-scripts/Diff
+export GPG_TTY=$(tty)

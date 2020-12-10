@@ -5,7 +5,7 @@
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
     posh = "push --set-upstream origin"
 	co = checkout
-	ci = commit
+	ci = commit -S
 	st = status
 	srp = checkout srp
 	dev = checkout develop
@@ -14,9 +14,10 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
-	cia = commit -a
+	cia = commit -a -S
 [push]
 	default = simple
 [user]
 	email = you@example.com
-	name = Your Name
+	name = nicholas.jones@textnow.com
+	signingkey = 9F6CFA885E7A4E33
