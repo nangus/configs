@@ -135,10 +135,16 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-source <(kubectl completion zsh)
-alias k=kubectl
-complete -F __start_kubectl k
+if command -v terraform &> /dev/null
+then
+complete -o nospace -C terraform terraform
+fi
+if command -v kubectl &> /dev/null
+then
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  complete -F __start_kubectl k
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nojones/src/nojones/configs/bin/google-cloud-sdk/path.zsh.inc'; fi
@@ -152,8 +158,14 @@ source "$NVM_DIR/nvm.sh"  # This loads nvm
 source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-export PS1='$(kube_ps1) %{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+if command -v kubectl &> /dev/null
+then
+  export PS1='$(kube_ps1) %{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 # '
+else
+  export PS1='%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+# '
+fi
 
 
 #Withokta
