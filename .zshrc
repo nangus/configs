@@ -158,7 +158,7 @@ source "$NVM_DIR/nvm.sh"  # This loads nvm
 source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-if command -v kubectl &> /dev/null
+if command -v kube_ps1 &> /dev/null
 then
   export PS1='$(kube_ps1) %{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 # '
